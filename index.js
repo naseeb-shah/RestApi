@@ -2,7 +2,8 @@ const express= require('express')
 const bodyParser=require("body-parser")
 let cors = require("cors");
 const app= express()
-const multer= require('multer')
+const multer= require('multer');
+const { response } = require('express');
 app.use(bodyParser.json());
 app.use(express.static('public')); 
 app.use('/images', express.static('images'));
@@ -31,7 +32,9 @@ var storage = multer.diskStorage({
 }
 
 
-
+app.get('/',(req,res)=>{
+  res.send("serveris started")
+})
 
 app.listen(3001,() =>{
   filepath=
